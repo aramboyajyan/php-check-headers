@@ -26,10 +26,13 @@ function is_valid_url($url) {
 
 if ($_POST) {
   $url = filter_input(INPUT_POST, 'url', FILTER_SANITIZE_URL);
+  // If 'http' ommitted, add manually
+  if (substr($url, 0, 4) != 'http') $url = 'http://' . $url;
+  // Check if the URL is valid and continue
   if (is_valid_url($url)) {
     // URL is OK, get the headers and build the output
     $headers = '';
-    foreach (get_headers($_POST['url']) as $header) {
+    foreach (get_headers($url) as $header) {
       $headers .= $header . '<br>';
     }
   }
@@ -103,13 +106,19 @@ if ($_POST) {
   margin: 8px 0 6px 0;
 }
 </style>
+<script type="text/javascript">
+// Focus the input box on page load
+window.onload = function() {
+  document.getElementById('url').focus();
+}
+</script>
 </head>
 <body>
 
 <div id="main">
 
   <form action="<?php print $php_self; ?>" method="post">
-    <input type="text" name="url" id="url" value="<?php isset($_POST['url']) ? print $_POST['url'] : ''; ?>">
+    <input type="text" name="url" id="url" value="<?php isset($_POST['url']) ? print $_POST['url'] : ''; ?>" placeholder="Enter URL">
     <input type="submit" value="Check headers" id="submit">
   </form>
 
