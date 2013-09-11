@@ -64,6 +64,7 @@ if ($_POST) {
   border-top: 1px solid #DDD;
   float: left;
   width: 100%;
+  word-wrap: break-word;
 }
 #url {
   width: 380px;
