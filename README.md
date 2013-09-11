@@ -4,6 +4,10 @@ Simple PHP script for checking the headers of given URL.
 
 Should be used only internally. The script does not enforce any additional security measures other than checking if the URL is valid.
 
+### Screenshots
+
+![Screenshot](https://raw.github.com/topsitemakers/phpcheckheaders/master/screenshot.png)
+
 ### Credits
 
 [HelloHappy CSS3 buttons](http://hellohappy.org/css3-buttons/).
